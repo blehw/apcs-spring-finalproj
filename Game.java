@@ -148,22 +148,24 @@ public class Game extends Canvas implements Runnable{
 	    nsPerTick = 7500000000D/60D;
 	}
 
-	if (input.up.isPressed()  && y > 0){
+	if (input.up.isPressed()  && y > 0 && t[y-1][x].getType() == "grass"){
 	    t[y-1][x].setCharacter(t[y][x].getCharacter());
 	    t[y][x].setCharacter(null);
 	    y--;
 	}
-	if (input.down.isPressed() && y+1 < terrain.getmaxY()){
+	if (input.down.isPressed() && y+1 < terrain.getmaxY() &&
+	    t[y+1][x].getType() == "grass"){
 	    t[y+1][x].setCharacter(t[y][x].getCharacter());
 	    t[y][x].setCharacter(null);
 	    y++;
 	}
-	if (input.left.isPressed() && x > 0){
+	if (input.left.isPressed() && x > 0 && t[y][x-1].getType() == "grass"){
 	    t[y][x-1].setCharacter(t[y][x].getCharacter());
 	    t[y][x].setCharacter(null);
 	    x--;
 	}
-	if (input.right.isPressed() && x+1 < terrain.getmaxX()){
+	if (input.right.isPressed() && x+1 < terrain.getmaxX() &&
+	    t[y][x+1].getType() == "grass"){
 	    t[y][x+1].setCharacter(t[y][x].getCharacter());
 	    t[y][x].setCharacter(null);
 	    x++;

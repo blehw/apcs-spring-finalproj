@@ -135,14 +135,16 @@ public class Terrain {
 	*/
 	
 	
-	int g = rand.nextInt(5) + 5;
+	int g = rand.nextInt(5) + 8;
 
 	for (int h = 0;h<g;h++) {
 	    int randX = rand.nextInt(100);
 	    int randY = rand.nextInt(40);
 	    Baller monster = new Baller();
-	    terrain[randY][randX].setCharacter(monster);
-	    terrain[randY][randX].setImage("m");
+	    if (terrain[randY][randX].getType() == "grass") {
+		terrain[randY][randX].setCharacter(monster);
+		terrain[randY][randX].setImage("m");
+	    }
 	    /*
 	    int v=0;
 	    while (v<4) {
