@@ -149,26 +149,36 @@ public class Game extends Canvas implements Runnable{
 	}
 
 	if (input.up.isPressed()  && y > 0 && t[y-1][x].getType() == "grass"){
+	    t[y][x].getCharacter().setDirection("up");
 	    t[y-1][x].setCharacter(t[y][x].getCharacter());
 	    t[y][x].setCharacter(null);
 	    y--;
 	}
 	if (input.down.isPressed() && y+1 < terrain.getmaxY() &&
-	    t[y+1][x].getType() == "grass"){
+	    t[y][x].getType() == "grass"){
+	    t[y+1][x].getCharacter().setDirection("down");
 	    t[y+1][x].setCharacter(t[y][x].getCharacter());
 	    t[y][x].setCharacter(null);
 	    y++;
 	}
 	if (input.left.isPressed() && x > 0 && t[y][x-1].getType() == "grass"){
+	    t[y][x].getCharacter().setDirection("left");
 	    t[y][x-1].setCharacter(t[y][x].getCharacter());
 	    t[y][x].setCharacter(null);
 	    x--;
 	}
 	if (input.right.isPressed() && x+1 < terrain.getmaxX() &&
-	    t[y][x+1].getType() == "grass"){
+	    t[y][x].getType() == "grass"){
+	    t[y][x].getCharacter().setDirection("right");
 	    t[y][x+1].setCharacter(t[y][x].getCharacter());
 	    t[y][x].setCharacter(null);
 	    x++;
+	}
+	if (input.space.isPressed()) {
+	    String direction = t[y][x].getCharacter().getDirection();
+	    if (direction == "up") {
+		t[y-1][x].setType("water");
+	    }
 	}
     }
     
