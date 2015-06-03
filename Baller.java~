@@ -67,6 +67,9 @@ public class Baller {
 	    " charitimasma: " + charitimasma;
     }
 
-    
+    public static void main(String[] args) {
+	Baller b = new Baller();
+	System.out.println(b);
+    }
 
 }

@@ -2,14 +2,14 @@
 import java.io.*;
 import java.util.*;
 
-public class Baller {
+public class Enemy {
 
     private int swag;
     private int ballskillz;
     private int charitimasma;
     private int rep;
     
-    public Baller() {
+    public Enemy() {
 	int skills = 10;
 	Random rand = new Random();
 	
