@@ -85,6 +85,7 @@ public class Terrain {
 		}
 	    }
 	}
+	arr[0][0] = 0;
 	for (int i=0;i<2;i++) {
 	    for (int k=0;k<5;k++) {
 		if (arr[i][k] == 1) {
@@ -97,43 +98,9 @@ public class Terrain {
 		}
 	    }
 	}
-
 	soften(0,maxY,0,maxX);
 
-	/*
-	int c = 0;
-	while (c < 6) {
-	    for (int a=0;a<maxY;a++) {
-		for (int b=0;b<maxX;b++) {
-		    if (terrain[a][b].getType() == "grass"  && 
-			rand.nextInt(100) > 40) {  
-			if (b-1 > 0) {
-			    terrain[a][b-1].setType("grass");
-			    terrain[a][b-1].setImage("#");
-			    
-			}
-			if (b+1 < maxX) {
-			    terrain[a][b+1].setType("grass");
-			    terrain[a][b+1].setImage("#");
-			    b++;
-			}
-			if (a-1 > 0) {
-			    terrain[a-1][b].setType("grass");
-			    terrain[a-1][b].setImage("#");
-			}
-			if (a+1 < maxY) {
-			    terrain[a+1][b].setType("grass");
-			    terrain[a+1][b].setImage("#");
-			}
-			
-			
-		    }
-		}
-	    }
-	    c = c + 1;
-	}
-	*/
-	
+
 	
 	int g = rand.nextInt(5) + 8;
 
@@ -145,70 +112,8 @@ public class Terrain {
 		terrain[randY][randX].setCharacter(monster);
 		terrain[randY][randX].setImage("m");
 	    }
-	    /*
-	    int v=0;
-	    while (v<4) {
-		int o = randY;
-		int p = randX;
-		if (rand.nextInt(100) > 1) {
-		    if (p-1 > 0) {
-			terrain[o][p-1].setType("water");
-			terrain[o][p-1].setImage("~");
-			
-		    }
-		    if (p+1 < maxX-1) {
-			terrain[o][p+1].setType("water");
-			terrain[o][p+1].setImage("~");
-			p++;
-		    }
-		    if (o-1 > 0) {
-			terrain[o-1][p].setType("water");
-			terrain[o-1][p].setImage("~");
-		    }
-		    if (o+1 < maxY-1) {
-			terrain[o+1][p].setType("water");
-			terrain[o+1][p].setImage("~");
-		    }
-		}
-	    }
-	    v++;
-	    */
 	}
-	
-	
-	/*
-	int x = 0;
-	while (x < 5) {
-	    for (int y=0;y<maxY-1;y++) {
-		for (int z=0;z<maxX-1;z++) {
-		    if (terrain[y][z].getType() == "water"  && 
-			rand.nextInt(100) > 10) {  
-			if (z-1 > 0) {
-			    terrain[y][z-1].setType("water");
-			    terrain[y][z-1].setImage("~");
-			    
-			}
-			if (z+1 < maxX-1) {
-			    terrain[y][z+1].setType("water");
-			    terrain[y][z+1].setImage("~");
-			    z++;
-			}
-			if (y-1 > 0) {
-			    terrain[y-1][z].setType("water");
-			    terrain[y-1][z].setImage("~");
-			}
-			if (y+1 < maxY-1) {
-			    terrain[y+1][z].setType("water");
-			    terrain[y+1][z].setImage("~");
-			}
-			
-			
-		    }
-		}
-	    }
-	    x = x + 1;
-	}
-	*/
+	  
     }
 
 

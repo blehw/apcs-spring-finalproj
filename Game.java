@@ -148,36 +148,45 @@ public class Game extends Canvas implements Runnable{
 	    nsPerTick = 7500000000D/60D;
 	}
 
-	if (input.up.isPressed()  && y > 0 && t[y-1][x].getType() == "grass"){
-	    t[y][x].getCharacter().setDirection("up");
+	if (input.up.isPressed()  && y > 0 && t[y-1][x].getType() != "water"){
 	    t[y-1][x].setCharacter(t[y][x].getCharacter());
+	    t[y][x].getCharacter().setDirection("up");
 	    t[y][x].setCharacter(null);
 	    y--;
 	}
 	if (input.down.isPressed() && y+1 < terrain.getmaxY() &&
-	    t[y][x].getType() == "grass"){
-	    t[y+1][x].getCharacter().setDirection("down");
+	    t[y+1][x].getType() != "water"){
 	    t[y+1][x].setCharacter(t[y][x].getCharacter());
+	    t[y+1][x].getCharacter().setDirection("down");
 	    t[y][x].setCharacter(null);
 	    y++;
 	}
-	if (input.left.isPressed() && x > 0 && t[y][x-1].getType() == "grass"){
-	    t[y][x].getCharacter().setDirection("left");
+	if (input.left.isPressed() && x > 0 && t[y][x-1].getType() != "water"){
 	    t[y][x-1].setCharacter(t[y][x].getCharacter());
+	    t[y][x].getCharacter().setDirection("left");
 	    t[y][x].setCharacter(null);
 	    x--;
 	}
 	if (input.right.isPressed() && x+1 < terrain.getmaxX() &&
-	    t[y][x].getType() == "grass"){
-	    t[y][x].getCharacter().setDirection("right");
+	    t[y][x+1].getType() != "water"){
 	    t[y][x+1].setCharacter(t[y][x].getCharacter());
+	    t[y][x].getCharacter().setDirection("right");
 	    t[y][x].setCharacter(null);
 	    x++;
 	}
 	if (input.space.isPressed()) {
 	    String direction = t[y][x].getCharacter().getDirection();
 	    if (direction == "up") {
-		t[y-1][x].setType("water");
+		t[y+1][x].setType("magic");
+	    }
+	    if (direction == "down") {
+		t[y-1][x].setType("magic");
+	    }
+	    if (direction == "right") {
+		t[y][x-1].setType("magic");
+	    }
+	    if (direction == "left") {
+		t[y][x+1].setType("magic");
 	    }
 	}
     }
@@ -206,6 +215,9 @@ public class Game extends Canvas implements Runnable{
 		}
 		if (t[y][x].getType() == "water") {
 		    image.setRGB(x,y,Color.BLUE.getRGB());
+		}
+		if (t[y][x].getType() == "magic") {
+		    image.setRGB(x,y,Color.ORANGE.getRGB());
 		}
 		if (t[y][x].hasCharacter()) {
 		    image.setRGB(x,y,Color.RED.getRGB());
