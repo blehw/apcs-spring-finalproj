@@ -8,7 +8,6 @@ public class Baller {
     private int ballskillz;
     private int charitimasma;
     private int rep;
-    private String direction;
     
     public Baller() {
 	int skills = 10;
@@ -28,8 +27,6 @@ public class Baller {
 
 	charitimasma = charitimasma + skills;
 	rep = 1;
-
-	direction = "right";
 	
     }
 
@@ -65,19 +62,14 @@ public class Baller {
 	rep += n;
     }
 
-    public String getDirection() {
-	return direction;
-    }
-
-    public void setDirection(String s) {
-	direction = s;
-    }
-
     public String toString() {
 	return "swag: " + swag + " ballskillz: " + ballskillz +
 	    " charitimasma: " + charitimasma;
     }
 
-    
+    public static void main(String[] args) {
+	Baller b = new Baller();
+	System.out.println(b);
+    }
 
 }

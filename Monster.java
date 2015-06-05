@@ -2,15 +2,14 @@
 import java.io.*;
 import java.util.*;
 
-public class Baller {
+public class Enemy {
 
     private int swag;
     private int ballskillz;
     private int charitimasma;
     private int rep;
-    private String direction;
     
-    public Baller() {
+    public Enemy() {
 	int skills = 10;
 	Random rand = new Random();
 	
@@ -28,8 +27,6 @@ public class Baller {
 
 	charitimasma = charitimasma + skills;
 	rep = 1;
-
-	direction = "right";
 	
     }
 
@@ -63,14 +60,6 @@ public class Baller {
 
     public void setRep(int n) {
 	rep += n;
-    }
-
-    public String getDirection() {
-	return direction;
-    }
-
-    public void setDirection(String s) {
-	direction = s;
     }
 
     public String toString() {
