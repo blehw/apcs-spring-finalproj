@@ -219,8 +219,13 @@ public class Game extends Canvas implements Runnable{
 		if (t[y][x].getType() == "magic") {
 		    image.setRGB(x,y,Color.ORANGE.getRGB());
 		}
-		if (t[y][x].hasCharacter()) {
-		    image.setRGB(x,y,Color.RED.getRGB());
+		if (t[y][x].getCharacter() != null) {
+		    if (t[y][x].getCharacter().getID() == "baller") {
+			image.setRGB(x,y,Color.RED.getRGB());
+		    } else {
+			image.setRGB(x,y,Color.YELLOW.getRGB());
+		    }
+		    
 		}
 		/*
 		if (t[y][x].getCharacter() == "monster") {

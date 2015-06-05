@@ -107,9 +107,9 @@ public class Terrain {
 	for (int h = 0;h<g;h++) {
 	    int randX = rand.nextInt(100);
 	    int randY = rand.nextInt(40);
-	    Baller monster = new Baller();
+	    Enemy enemy = new Enemy();
 	    if (terrain[randY][randX].getType() == "grass") {
-		terrain[randY][randX].setCharacter(monster);
+		terrain[randY][randX].setCharacter(enemy);
 		terrain[randY][randX].setImage("m");
 	    }
 	}

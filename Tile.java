@@ -43,12 +43,4 @@ public class Tile {
 	character = data;
     }
 
-    public boolean hasCharacter() {
-	if (character == null) {
-	    return false;
-	} else {
-	    return true;
-	}
-    }
-
 }

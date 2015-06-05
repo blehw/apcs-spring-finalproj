@@ -2,8 +2,9 @@
 import java.io.*;
 import java.util.*;
 
-public class Baller {
+public class Baller extends Person {
 
+    private String ID;
     private int swag;
     private int ballskillz;
     private int charitimasma;
@@ -11,6 +12,8 @@ public class Baller {
     private String direction;
     
     public Baller() {
+	ID = "baller";
+	
 	int skills = 10;
 	Random rand = new Random();
 	
@@ -33,6 +36,10 @@ public class Baller {
 	
     }
 
+    public String getID() {
+	return ID;
+    }
+    
     public int getSwag() {
 	return swag;
     }
