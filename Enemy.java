@@ -2,7 +2,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Enemy extends Person {
+public class Enemy extends Baller {
 
     private String ID;
     private int swag;
