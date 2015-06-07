@@ -8,8 +8,8 @@ public class Terrain {
     private int maxY;
 
     public Terrain() {
-	maxX = 100;
-	maxY = 40;
+	maxX = 200;
+	maxY = 80;
 	terrain = new Tile[maxY][maxX];
 	for (int i=0;i<maxY;i++) {
 	    for (int k=0;k<maxX;k++) {
