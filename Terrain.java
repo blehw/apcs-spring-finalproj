@@ -36,14 +36,14 @@ public class Terrain {
     }
 
     
-    public void soften(int d,int e,int f,int g) {
+    public void soften1() {
 	Random rand = new Random();
 	int c = 0;
 	while (c < 6) {
-	    for (int a=d;a<e;a++) {
-		for (int b=f;b<g;b++) {
+	    for (int a=0;a<maxY;a++) {
+		for (int b=0;b<maxX;b++) {
 		    if (terrain[a][b].getType() == "grass"  && 
-			rand.nextInt(100) > 40) {  
+			rand.nextInt(100) < 40) {  
 			if (b-1 > 0) {
 			    terrain[a][b-1].setType("grass");
 			    terrain[a][b-1].setImage("#");
@@ -69,16 +69,126 @@ public class Terrain {
 	    }
 	    c = c + 1;
 	}
+	
     }
+
+    
+    public void soften2() {
+	Random rand = new Random();
+	int c = 0;
+	while (c < 3) {
+	    for (int a=maxY-1;a>0;a--) {
+		for (int b=0;b<maxX;b++) {
+		    if (terrain[a][b].getType() == "grass"  && 
+			rand.nextInt(100) < 40) {  
+			if (b-1 > 0) {
+			    terrain[a][b-1].setType("grass");
+			    terrain[a][b-1].setImage("#");
+			    
+			}
+			if (b+1 < maxX) {
+			    terrain[a][b+1].setType("grass");
+			    terrain[a][b+1].setImage("#");
+			    b++;
+			}
+			if (a-1 > 0) {
+			    terrain[a-1][b].setType("grass");
+			    terrain[a-1][b].setImage("#");
+			}
+			if (a+1 < maxY) {
+			    terrain[a+1][b].setType("grass");
+			    terrain[a+1][b].setImage("#");
+			}
+			
+			
+		    }
+		}
+	    }
+	    c = c + 1;
+	}
+	
+    }
+
+    public void soften3() {
+	Random rand = new Random();
+	int c = 0;
+	while (c < 3) {
+	    for (int a=maxY-1;a>0;a--) {
+		for (int b=maxX-1;b>0;b--) {
+		    if (terrain[a][b].getType() == "grass"  && 
+			rand.nextInt(100) < 40) {  
+			if (b-1 > 0) {
+			    terrain[a][b-1].setType("grass");
+			    terrain[a][b-1].setImage("#");
+			    
+			}
+			if (b+1 < maxX) {
+			    terrain[a][b+1].setType("grass");
+			    terrain[a][b+1].setImage("#");
+			    b++;
+			}
+			if (a-1 > 0) {
+			    terrain[a-1][b].setType("grass");
+			    terrain[a-1][b].setImage("#");
+			}
+			if (a+1 < maxY) {
+			    terrain[a+1][b].setType("grass");
+			    terrain[a+1][b].setImage("#");
+			}
+			
+			
+		    }
+		}
+	    }
+	    c = c + 1;
+	}
+	
+    }
+
+    public void soften4() {
+	Random rand = new Random();
+	int c = 0;
+	while (c < 3) {
+	    for (int a=0;a<maxY;a++) {
+		for (int b=maxX-1;b>0;b--) {
+		    if (terrain[a][b].getType() == "grass"  && 
+			rand.nextInt(100) < 40) {  
+			if (b-1 > 0) {
+			    terrain[a][b-1].setType("grass");
+			    terrain[a][b-1].setImage("#");
+			    
+			}
+			if (b+1 < maxX) {
+			    terrain[a][b+1].setType("grass");
+			    terrain[a][b+1].setImage("#");
+			    b++;
+			}
+			if (a-1 > 0) {
+			    terrain[a-1][b].setType("grass");
+			    terrain[a-1][b].setImage("#");
+			}
+			if (a+1 < maxY) {
+			    terrain[a+1][b].setType("grass");
+			    terrain[a+1][b].setImage("#");
+			}
+			
+			
+		    }
+		}
+	    }
+	    c = c + 1;
+	}
+	
+    }  
     
 
     public void randomize() {
 	
 	Random rand = new Random();
-	int[][] arr = new int[2][5];
-	for (int b=0;b<2;b++) {
-	    for (int a=0;a<5;a++) {
-		if (rand.nextInt(100) < 70) {
+	int[][] arr = new int[8][20];
+	for (int b=0;b<8;b++) {
+	    for (int a=0;a<20;a++) {
+		if (rand.nextInt(100) < 80) {
 		    arr[b][a] = 1; 
 		} else {
 		    arr[b][a] = 0;
@@ -86,8 +196,8 @@ public class Terrain {
 	    }
 	}
 	arr[0][0] = 0;
-	for (int i=0;i<2;i++) {
-	    for (int k=0;k<5;k++) {
+	for (int i=0;i<8;i++) {
+	    for (int k=0;k<20;k++) {
 		if (arr[i][k] == 1) {
 		    for (int a=i*20;a<i*20+20;a++) {
 			for (int b=k*20;b<k*20+20;b++) {
@@ -98,9 +208,10 @@ public class Terrain {
 		}
 	    }
 	}
-	soften(0,maxY,0,maxX);
-
-
+	soften1();
+	soften2();
+	soften3();
+	soften4();
 	
 	int g = rand.nextInt(5) + 8;
 
