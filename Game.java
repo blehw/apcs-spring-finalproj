@@ -192,6 +192,21 @@ public class Game extends Canvas implements Runnable{
 		}
 	    }
 	    if (move == "freeze") {
+		for (int i=y-2;i<y+2;i++) {
+		    for (int k=x-2;k<x+2;k++) {
+			t[i][k].setType("freeze");
+			t[i][k].setImage("^");
+		    }
+		}
+		for (int a=y-3;a<y+3;a++) {
+		    for (int b=x-3;b<x+3;b++) {
+			if (rand.nextInt(100) < 50) {
+			    t[a][b].setType("freeze");
+			    t[a][b].setImage("^");
+			}
+		    }
+		}
+		/*
 		if (direction == "up") {
 		    t[y+1][x].setType("freeze");
 		}
@@ -204,6 +219,7 @@ public class Game extends Canvas implements Runnable{
 		if (direction == "left") {
 		    t[y][x+1].setType("freeze");
 		}
+		*/
 	    }
 	}
 	if (input.z.isPressed()) {
