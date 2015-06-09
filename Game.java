@@ -176,18 +176,41 @@ public class Game extends Canvas implements Runnable{
 	}
 	if (input.space.isPressed()) {
 	    String direction = t[y][x].getCharacter().getDirection();
-	    if (direction == "up") {
-		t[y+1][x].setType("magic");
+	    String move = t[y][x].getCharacter().getMove();
+	    if (move == "magic") {
+		if (direction == "up") {
+		    t[y+1][x].setType("magic");
+		}
+		if (direction == "down") {
+		    t[y-1][x].setType("magic");
+		}
+		if (direction == "right") {
+		    t[y][x-1].setType("magic");
+		}
+		if (direction == "left") {
+		    t[y][x+1].setType("magic");
+		}
 	    }
-	    if (direction == "down") {
-		t[y-1][x].setType("magic");
+	    if (move == "freeze") {
+		if (direction == "up") {
+		    t[y+1][x].setType("freeze");
+		}
+		if (direction == "down") {
+		    t[y-1][x].setType("freeze");
+		}
+		if (direction == "right") {
+		    t[y][x-1].setType("freeze");
+		}
+		if (direction == "left") {
+		    t[y][x+1].setType("freeze");
+		}
 	    }
-	    if (direction == "right") {
-		t[y][x-1].setType("magic");
-	    }
-	    if (direction == "left") {
-		t[y][x+1].setType("magic");
-	    }
+	}
+	if (input.z.isPressed()) {
+	    t[y][x].getCharacter().setMove("magic");
+	}
+	if (input.x.isPressed()) {
+	    t[y][x].getCharacter().setMove("freeze");
 	}
     }
     
@@ -218,6 +241,10 @@ public class Game extends Canvas implements Runnable{
 		}
 		if (t[y][x].getType() == "magic") {
 		    image.setRGB(x,y,Color.ORANGE.getRGB());
+		}
+		if (t[y][x].getType() == "freeze") {
+		    Color lightblue = new Color(0,255,255);
+		    image.setRGB(x,y,lightblue.getRGB());
 		}
 		if (t[y][x].getCharacter() != null) {
 		    if (t[y][x].getCharacter().getID() == "baller") {

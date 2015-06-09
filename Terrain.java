@@ -188,7 +188,7 @@ public class Terrain {
 	int[][] arr = new int[8][20];
 	for (int b=0;b<8;b++) {
 	    for (int a=0;a<20;a++) {
-		if (rand.nextInt(100) < 80) {
+		if (rand.nextInt(100) < 85) {
 		    arr[b][a] = 1; 
 		} else {
 		    arr[b][a] = 0;
@@ -196,8 +196,8 @@ public class Terrain {
 	    }
 	}
 	arr[0][0] = 0;
-	for (int i=0;i<8;i++) {
-	    for (int k=0;k<20;k++) {
+	for (int i=0;i<4;i++) {
+	    for (int k=0;k<10;k++) {
 		if (arr[i][k] == 1) {
 		    for (int a=i*20;a<i*20+20;a++) {
 			for (int b=k*20;b<k*20+20;b++) {

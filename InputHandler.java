@@ -38,6 +38,8 @@ public class InputHandler implements KeyListener {
     public Key left = new Key();
     public Key right = new Key();
     public Key space = new Key();
+    public Key z = new Key();
+    public Key x = new Key();
     
     public void keyPressed(KeyEvent e) {
 	toggleKey(e.getKeyCode(), true);
@@ -70,6 +72,12 @@ public class InputHandler implements KeyListener {
 	}
 	if (KeyCode == KeyEvent.VK_SPACE) {
 	    space.toggle(isPressed);
+	}
+	if (KeyCode == KeyEvent.VK_Z) {
+	    z.toggle(isPressed);
+	}
+	if (KeyCode == KeyEvent.VK_X) {
+	    x.toggle(isPressed);
 	}
     }
 }

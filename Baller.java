@@ -10,6 +10,7 @@ public class Baller extends Person {
     private int charitimasma;
     private int rep;
     private String direction;
+    private String move;
     
     public Baller() {
 	ID = "baller";
@@ -33,6 +34,7 @@ public class Baller extends Person {
 	rep = 1;
 
 	direction = "right";
+	move = "magic";
 	
     }
 
@@ -78,6 +80,14 @@ public class Baller extends Person {
 
     public void setDirection(String s) {
 	direction = s;
+    }
+
+    public String getMove() {
+	return move;
+    }
+
+    public void setMove(String s) {
+	move = s;
     }
 
     public String toString() {
