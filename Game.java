@@ -154,21 +154,22 @@ public class Game extends Canvas implements Runnable{
 	    t[y][x].setCharacter(null);
 	    y--;
 	}
-	if (input.down.isPressed() && y+1 < terrain.getmaxY() &&
-	    t[y+1][x].getType() != "water"){
+	if (input.down.isPressed() && y+1 < terrain.getmaxY() && t[y+1][x].getType() != "water" && (t[y+1][x].getType() != "enemy" || input.space.isPressed())){
 	    t[y+1][x].setCharacter(t[y][x].getCharacter());
 	    t[y+1][x].getCharacter().setDirection("down");
 	    t[y][x].setCharacter(null);
 	    y++;
 	}
-	if (input.left.isPressed() && x > 0 && t[y][x-1].getType() != "water"){
+	if (input.left.isPressed()  && x > 0 && t[y][x-1].getType() != "water" && (t[y][x-1].getType() != "enemy" || input.space.isPressed())){
+	//if (input.left.isPressed() && x > 0 && t[y][x-1].getType() != "water" (t[y-1][x].getType() != "enemy" || input.space.isPressed())){
 	    t[y][x-1].setCharacter(t[y][x].getCharacter());
 	    t[y][x].getCharacter().setDirection("left");
 	    t[y][x].setCharacter(null);
 	    x--;
 	}
-	if (input.right.isPressed() && x+1 < terrain.getmaxX() &&
-	    t[y][x+1].getType() != "water"){
+	if (input.right.isPressed()  && x+1 > 0 && t[y][x+1].getType() != "water" && (t[y][x+1].getType() != "enemy" || input.space.isPressed())){
+	//if (input.right.isPressed() && x+1 < terrain.getmaxX() &&
+	    //t[y][x+1].getType() != "water" (t[y-1][x].getType() != "enemy" || input.space.isPressed())){
 	    t[y][x+1].setCharacter(t[y][x].getCharacter());
 	    t[y][x].getCharacter().setDirection("right");
 	    t[y][x].setCharacter(null);
