@@ -111,33 +111,35 @@ public class Game extends Canvas implements Runnable{
 
 	for (int y=0;y<terrain.getmaxY();y++) {
 	    for (int x=0;x<terrain.getmaxX();x++) {
-		/*
-		if (t[y][x].getCharacter() == "monster") {
-		    if (rand.nextInt(100) <25) {
-			int direction = rand.nextInt(4);
-			if (direction == 0 && y-1 > -1) {
-			    t[y][x].setCharacter("");
-			    t[y-1][x].setCharacter("monster");
-			    y--;
-			}
-		        if (direction == 1 && y+1  < terrain.getmaxY()) {
-			    t[y][x].setCharacter("");
-			    t[y+1][x].setCharacter("monster");
-			    y++;
-			}
-			if (direction == 2 && x-1 > -1) {
-			    t[y][x].setCharacter("");
-			    t[y][x-1].setCharacter("monster");
-			    x--;
-			}
-			if (direction == 3 && x+1 < terrain.getmaxX()) {
-			    t[y][x].setCharacter("");
-			    t[y][x+1].setCharacter("monster");
-			    x++;
+		if (t[y][x].getCharacter() != null) {
+		    if (t[y][x].getCharacter().getID() == "enemy") {
+			Enemy e = new Enemy();
+			if (rand.nextInt(100) <25) {
+			    int direction = rand.nextInt(4);
+			    if (direction == 0 && y-1 > -1) {
+				t[y][x].setCharacter(null);
+				t[y-1][x].setCharacter(e);
+				y--;
+			    }
+			    if (direction == 1 && y+1  < terrain.getmaxY()) {
+				t[y][x].setCharacter(null);
+				t[y+1][x].setCharacter(e);
+				y++;
+			    }
+			    if (direction == 2 && x-1 > -1) {
+				t[y][x].setCharacter(null);
+				t[y][x-1].setCharacter(e);
+				x--;
+			    }
+			    if (direction == 3 && x+1 < terrain.getmaxX()) {
+				t[y][x].setCharacter(null);
+				t[y][x+1].setCharacter(e);
+				x++;
+			    }
 			}
 		    }
 		}
-		*/
+		
 	    }
 	}
 	
@@ -201,7 +203,7 @@ public class Game extends Canvas implements Runnable{
 		}
 		for (int a=y-3;a<y+3;a++) {
 		    for (int b=x-3;b<x+3;b++) {
-			if (rand.nextInt(100) < 50) {
+			if (rand.nextInt(100) < 10) {
 			    t[a][b].setType("freeze");
 			    t[a][b].setImage("^");
 			}
