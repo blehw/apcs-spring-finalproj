@@ -117,22 +117,22 @@ public class Game extends Canvas implements Runnable{
 			if (rand.nextInt(100) <25) {
 			    int direction = rand.nextInt(4);
 			    if (direction == 0 && y-1 > -1) {
-				t[y][x].setCharacter(null);
+				//t[y][x].setCharacter(null);
 				t[y-1][x].setCharacter(e);
 				y--;
 			    }
 			    if (direction == 1 && y+1  < terrain.getmaxY()) {
-				t[y][x].setCharacter(null);
+				//t[y][x].setCharacter(null);
 				t[y+1][x].setCharacter(e);
 				y++;
 			    }
 			    if (direction == 2 && x-1 > -1) {
-				t[y][x].setCharacter(null);
+				//t[y][x].setCharacter(null);
 				t[y][x-1].setCharacter(e);
 				x--;
 			    }
 			    if (direction == 3 && x+1 < terrain.getmaxX()) {
-				t[y][x].setCharacter(null);
+				//t[y][x].setCharacter(null);
 				t[y][x+1].setCharacter(e);
 				x++;
 			    }
@@ -268,7 +268,8 @@ public class Game extends Canvas implements Runnable{
 		if (t[y][x].getCharacter() != null) {
 		    if (t[y][x].getCharacter().getID() == "baller") {
 			image.setRGB(x,y,Color.RED.getRGB());
-		    } else {
+		    }
+		    if (t[y][x].getCharacter().getID() == "enemy") {
 			image.setRGB(x,y,Color.YELLOW.getRGB());
 		    }
 		    
