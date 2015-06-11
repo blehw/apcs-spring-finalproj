@@ -111,33 +111,33 @@ public class Game extends Canvas implements Runnable{
 
 	for (int y=0;y<terrain.getmaxY();y++) {
 	    for (int x=0;x<terrain.getmaxX();x++) {
-		/*
-		if (t[y][x].getCharacter() == "monster") {
+		
+		if (t[y][x].getType() == "enemy") {
 		    if (rand.nextInt(100) <25) {
 			int direction = rand.nextInt(4);
 			if (direction == 0 && y-1 > -1) {
-			    t[y][x].setCharacter("");
-			    t[y-1][x].setCharacter("monster");
+			    t[y][x].setType("");
+			    t[y-1][x].setType("enemy");
 			    y--;
 			}
 		        if (direction == 1 && y+1  < terrain.getmaxY()) {
-			    t[y][x].setCharacter("");
-			    t[y+1][x].setCharacter("monster");
+			    t[y][x].setType("");
+			    t[y+1][x].setType("enemy");
 			    y++;
 			}
 			if (direction == 2 && x-1 > -1) {
-			    t[y][x].setCharacter("");
-			    t[y][x-1].setCharacter("monster");
+			    t[y][x].setType("");
+			    t[y][x-1].setType("enemy");
 			    x--;
 			}
 			if (direction == 3 && x+1 < terrain.getmaxX()) {
-			    t[y][x].setCharacter("");
-			    t[y][x+1].setCharacter("monster");
+			    t[y][x].setType("");
+			    t[y][x+1].setType("enemy");
 			    x++;
 			}
 		    }
 		}
-		*/
+		
 	    }
 	}
 	

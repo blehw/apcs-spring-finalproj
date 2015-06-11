@@ -148,27 +148,28 @@ public class Game extends Canvas implements Runnable{
 	    nsPerTick = 7500000000D/60D;
 	}
 
-	if (input.up.isPressed()  && y > 0 && t[y-1][x].getType() != "water" && t[y-1][x].getType() != "Enemy"){
+	if (input.up.isPressed()  && y > 0 && t[y-1][x].getType() != "water" && (t[y-1][x].getType() != "enemy" || input.space.isPressed())){
 	    t[y-1][x].setCharacter(t[y][x].getCharacter());
 	    t[y][x].getCharacter().setDirection("up");
 	    t[y][x].setCharacter(null);
 	    y--;
 	}
-	if (input.down.isPressed() && y+1 < terrain.getmaxY() &&
-	    t[y+1][x].getType() != "water"){
+	if (input.down.isPressed() && y+1 < terrain.getmaxY() && t[y+1][x].getType() != "water" && (t[y+1][x].getType() != "enemy" || input.space.isPressed())){
 	    t[y+1][x].setCharacter(t[y][x].getCharacter());
 	    t[y+1][x].getCharacter().setDirection("down");
 	    t[y][x].setCharacter(null);
 	    y++;
 	}
-	if (input.left.isPressed() && x > 0 && t[y][x-1].getType() != "water"){
+	if (input.left.isPressed()  && x > 0 && t[y][x-1].getType() != "water" && (t[y][x-1].getType() != "enemy" || input.space.isPressed())){
+	//if (input.left.isPressed() && x > 0 && t[y][x-1].getType() != "water" (t[y-1][x].getType() != "enemy" || input.space.isPressed())){
 	    t[y][x-1].setCharacter(t[y][x].getCharacter());
 	    t[y][x].getCharacter().setDirection("left");
 	    t[y][x].setCharacter(null);
 	    x--;
 	}
-	if (input.right.isPressed() && x+1 < terrain.getmaxX() &&
-	    t[y][x+1].getType() != "water"){
+	if (input.right.isPressed()  && x+1 > 0 && t[y][x+1].getType() != "water" && (t[y][x+1].getType() != "enemy" || input.space.isPressed())){
+	//if (input.right.isPressed() && x+1 < terrain.getmaxX() &&
+	    //t[y][x+1].getType() != "water" (t[y-1][x].getType() != "enemy" || input.space.isPressed())){
 	    t[y][x+1].setCharacter(t[y][x].getCharacter());
 	    t[y][x].getCharacter().setDirection("right");
 	    t[y][x].setCharacter(null);
@@ -192,6 +193,21 @@ public class Game extends Canvas implements Runnable{
 		}
 	    }
 	    if (move == "freeze") {
+		for (int i=y-2;i<y+2;i++) {
+		    for (int k=x-2;k<x+2;k++) {
+			t[i][k].setType("freeze");
+			t[i][k].setImage("^");
+		    }
+		}
+		for (int a=y-3;a<y+3;a++) {
+		    for (int b=x-3;b<x+3;b++) {
+			if (rand.nextInt(100) < 50) {
+			    t[a][b].setType("freeze");
+			    t[a][b].setImage("^");
+			}
+		    }
+		}
+		/*
 		if (direction == "up") {
 		    t[y+1][x].setType("freeze");
 		}
@@ -204,6 +220,7 @@ public class Game extends Canvas implements Runnable{
 		if (direction == "left") {
 		    t[y][x+1].setType("freeze");
 		}
+		*/
 	    }
 	}
 	if (input.z.isPressed()) {
