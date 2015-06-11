@@ -14,10 +14,11 @@ public class Baller extends Person {
     
     public Baller() {
 	ID = "baller";
-	
-	int skills = 10;
+
+	/*
+	int skills = 5;
 	Random rand = new Random();
-	
+
 	swag = 5;
 	ballskillz = 5;
 	charitimasma = 5;
@@ -32,6 +33,9 @@ public class Baller extends Person {
 
 	charitimasma = charitimasma + skills;
 	rep = 1;
+	*/
+	
+	ballskillz = 200;
 
 	direction = "right";
 	move = "magic";

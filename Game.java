@@ -18,7 +18,7 @@ public class Game extends Canvas implements Runnable{
     private static final long serialVersionUID = 1L;
     
     public static final int WIDTH = 200;
-    public static final int HEIGHT = 80;
+    public static final int HEIGHT = 81;
     public static final int SCALE = 10;
     public static final String NAME = "Game";
     
@@ -262,8 +262,11 @@ public class Game extends Canvas implements Runnable{
 		    image.setRGB(x,y,Color.ORANGE.getRGB());
 		}
 		if (t[y][x].getType() == "freeze") {
-		    Color lightblue = new Color(0,255,255);
-		    image.setRGB(x,y,lightblue.getRGB());
+		    //Color lightblue = new Color(0,255,255);
+		    image.setRGB(x,y,Color.CYAN.getRGB());
+		}
+		if (t[y][x].getType() == "mana") {
+		    image.setRGB(x,y,Color.WHITE.getRGB());
 		}
 		if (t[y][x].getCharacter() != null) {
 		    if (t[y][x].getCharacter().getID() == "baller") {
