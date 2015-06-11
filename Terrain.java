@@ -221,8 +221,6 @@ public class Terrain {
 	    Enemy enemy = new Enemy();
 	    if (terrain[randY][randX].getType() == "grass") {
 		terrain[randY][randX].setCharacter(enemy);
-		terrain[randY][randX].setType("enemy");
-		terrain[randY][randX].setImage("m");
 	    }
 	}
 	  
