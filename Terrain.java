@@ -223,7 +223,9 @@ public class Terrain {
 		terrain[randY][randX].setCharacter(enemy);
 	    }
 	}
-	  
+	for (int a = 0;a<200;a++) {
+	    terrain[79][a].setType("mana");
+	}
     }
 
 
