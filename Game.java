@@ -181,6 +181,7 @@ public class Game extends Canvas implements Runnable{
 	    String direction = t[y][x].getCharacter().getDirection();
 	    String move = t[y][x].getCharacter().getMove();
 	    if (move == "magic") {
+		t[y][x].setBallskillz()
 		if (direction == "up") {
 		    t[y+1][x].setType("magic");
 		}
