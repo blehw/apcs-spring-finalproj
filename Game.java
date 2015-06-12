@@ -181,7 +181,7 @@ public class Game extends Canvas implements Runnable{
 	    String direction = t[y][x].getCharacter().getDirection();
 	    String move = t[y][x].getCharacter().getMove();
 	    if (move == "magic") {
-		t[y][x].setBallskillz()
+		t[y][x].getCharacter().setBallskillz(t[y][x].getCharacter().getBallskillz() - 10);
 		if (direction == "up") {
 		    t[y+1][x].setType("magic");
 		}
@@ -196,6 +196,7 @@ public class Game extends Canvas implements Runnable{
 		}
 	    }
 	    if (move == "freeze") {
+		t[y][x].getCharacter().setBallskillz(t[y][x].getCharacter().getBallskillz() - 20);
 		for (int i=y-2;i<y+2;i++) {
 		    for (int k=x-2;k<x+2;k++) {
 			t[i][k].setType("freeze");
