@@ -18,7 +18,7 @@ public class Game extends Canvas implements Runnable{
     private static final long serialVersionUID = 1L;
     
     public static final int WIDTH = 200;
-    public static final int HEIGHT = 81;
+    public static final int HEIGHT = 80;
     public static final int SCALE = 10;
     public static final String NAME = "Game";
     
@@ -109,10 +109,10 @@ public class Game extends Canvas implements Runnable{
 
 	Tile[][] t = terrain.getTerrain();
 
-	//for (int y=0;y<terrain.getmaxY();y++) {
-	    //for (int x=0;x<terrain.getmaxX();x++) {
-
-		/*
+	for (int y=0;y<terrain.getmaxY();y++) {
+	    for (int x=0;x<terrain.getmaxX();x++) {
+<<<<<<< HEAD
+		
 		if (t[y][x].getType() == "enemy") {
 		    if (rand.nextInt(100) <25) {
 			int direction = rand.nextInt(4);
@@ -135,9 +135,7 @@ public class Game extends Canvas implements Runnable{
 			    t[y][x].setType("");
 			    t[y][x+1].setType("enemy");
 			    x++;
-			    */
-//=======
-/*
+=======
 		if (t[y][x].getCharacter() != null) {
 		    if (t[y][x].getCharacter().getID() == "enemy") {
 			Enemy e = new Enemy();
@@ -163,14 +161,13 @@ public class Game extends Canvas implements Runnable{
 				t[y][x+1].setCharacter(e);
 				x++;
 			    }
-			    */
-//>>>>>>> 12e00154e73c8aa30e1ccaacc02dc3593d593a8c
-			//}
-		    //}
-		//}
+>>>>>>> 12e00154e73c8aa30e1ccaacc02dc3593d593a8c
+			}
+		    }
+		}
 		
-	    //}
-	//}
+	    }
+	}
 	
 	if (t[y][x].getType() == "water") {
 	    nsPerTick = 15000000000D/60D;
@@ -210,7 +207,6 @@ public class Game extends Canvas implements Runnable{
 	    String direction = t[y][x].getCharacter().getDirection();
 	    String move = t[y][x].getCharacter().getMove();
 	    if (move == "magic") {
-		t[y][x].getCharacter().setBallskillz(t[y][x].getCharacter().getBallskillz() - 10);
 		if (direction == "up") {
 		    t[y+1][x].setType("magic");
 		}
@@ -225,7 +221,6 @@ public class Game extends Canvas implements Runnable{
 		}
 	    }
 	    if (move == "freeze") {
-		t[y][x].getCharacter().setBallskillz(t[y][x].getCharacter().getBallskillz() - 20);
 		for (int i=y-2;i<y+2;i++) {
 		    for (int k=x-2;k<x+2;k++) {
 			t[i][k].setType("freeze");
@@ -293,11 +288,8 @@ public class Game extends Canvas implements Runnable{
 		    image.setRGB(x,y,Color.ORANGE.getRGB());
 		}
 		if (t[y][x].getType() == "freeze") {
-		    //Color lightblue = new Color(0,255,255);
-		    image.setRGB(x,y,Color.CYAN.getRGB());
-		}
-		if (t[y][x].getType() == "mana") {
-		    image.setRGB(x,y,Color.WHITE.getRGB());
+		    Color lightblue = new Color(0,255,255);
+		    image.setRGB(x,y,lightblue.getRGB());
 		}
 		if (t[y][x].getCharacter() != null) {
 		    if (t[y][x].getCharacter().getID() == "baller") {
