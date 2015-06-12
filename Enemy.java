@@ -10,6 +10,7 @@ public class Enemy extends Baller {
     private int charitimasma;
     private int rep;
     private String direction;
+    private String move;
     
     public Enemy() {
 	ID = "enemy";

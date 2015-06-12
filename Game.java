@@ -109,9 +109,10 @@ public class Game extends Canvas implements Runnable{
 
 	Tile[][] t = terrain.getTerrain();
 
-	for (int y=0;y<terrain.getmaxY();y++) {
-	    for (int x=0;x<terrain.getmaxX();x++) {
-		
+	//for (int y=0;y<terrain.getmaxY();y++) {
+	    //for (int x=0;x<terrain.getmaxX();x++) {
+
+		/*
 		if (t[y][x].getType() == "enemy") {
 		    if (rand.nextInt(100) <25) {
 			int direction = rand.nextInt(4);
@@ -134,12 +135,42 @@ public class Game extends Canvas implements Runnable{
 			    t[y][x].setType("");
 			    t[y][x+1].setType("enemy");
 			    x++;
-			}
-		    }
-		}
+			    */
+//=======
+/*
+		if (t[y][x].getCharacter() != null) {
+		    if (t[y][x].getCharacter().getID() == "enemy") {
+			Enemy e = new Enemy();
+			if (rand.nextInt(100) <25) {
+			    int direction = rand.nextInt(4);
+			    if (direction == 0 && y-1 > -1) {
+				t[y][x].setCharacter(null);
+				t[y-1][x].setCharacter(e);
+				y--;
+			    }
+			    if (direction == 1 && y+1  < terrain.getmaxY()) {
+				t[y][x].setCharacter(null);
+				t[y+1][x].setCharacter(e);
+				y++;
+			    }
+			    if (direction == 2 && x-1 > -1) {
+				t[y][x].setCharacter(null);
+				t[y][x-1].setCharacter(e);
+				x--;
+			    }
+			    if (direction == 3 && x+1 < terrain.getmaxX()) {
+				t[y][x].setCharacter(null);
+				t[y][x+1].setCharacter(e);
+				x++;
+			    }
+			    */
+//>>>>>>> 12e00154e73c8aa30e1ccaacc02dc3593d593a8c
+			//}
+		    //}
+		//}
 		
-	    }
-	}
+	    //}
+	//}
 	
 	if (t[y][x].getType() == "water") {
 	    nsPerTick = 15000000000D/60D;
@@ -201,7 +232,7 @@ public class Game extends Canvas implements Runnable{
 		}
 		for (int a=y-3;a<y+3;a++) {
 		    for (int b=x-3;b<x+3;b++) {
-			if (rand.nextInt(100) < 50) {
+			if (rand.nextInt(100) < 10) {
 			    t[a][b].setType("freeze");
 			    t[a][b].setImage("^");
 			}
@@ -266,7 +297,8 @@ public class Game extends Canvas implements Runnable{
 		if (t[y][x].getCharacter() != null) {
 		    if (t[y][x].getCharacter().getID() == "baller") {
 			image.setRGB(x,y,Color.RED.getRGB());
-		    } else {
+		    }
+		    if (t[y][x].getCharacter().getID() == "enemy") {
 			image.setRGB(x,y,Color.YELLOW.getRGB());
 		    }
 		    
