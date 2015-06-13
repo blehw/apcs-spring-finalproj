@@ -179,6 +179,11 @@ public class Game extends Canvas implements Runnable{
 	    nsPerTick = 7500000000D/60D;
 	}
 
+
+	if(input.up.isPressed() || input.left.isPressed() || input.right.isPressed() || input.down.isPressed()){
+		baller.setMana(baller.getMana()-1);
+	}
+
 	if (input.up.isPressed()  && y > 0 && t[y-1][x].getType() != "water" && (t[y-1][x].getType() != "enemy" || input.space.isPressed())){
 	    t[y-1][x].setCharacter(t[y][x].getCharacter());
 	    t[y][x].getCharacter().setDirection("up");

@@ -11,6 +11,7 @@ public class Baller extends Person {
     private int rep;
     private String direction;
     private String move;
+    private int mana;
     
     public Baller() {
 	ID = "baller";
@@ -36,10 +37,18 @@ public class Baller extends Person {
 	*/
 	
 	ballskillz = 200;
-
+	mana = 20;
 	direction = "right";
 	move = "magic";
 	
+    }
+
+    public int getMana(){
+    	return mana;
+    }
+
+    public void setMana(int m){
+    	mana = m;
     }
 
     public String getID() {
