@@ -12,10 +12,13 @@ public class Baller extends Person {
     private String direction;
     private String move;
     private int mana;
-    
+    int x;
+    int y;
+
     public Baller() {
 	ID = "baller";
-
+	x = 0;
+	y = 0;
 	/*
 	int skills = 5;
 	Random rand = new Random();
@@ -42,7 +45,18 @@ public class Baller extends Person {
 	move = "magic";
 	
     }
-
+    public int getX(){
+    	return x;
+    }
+    public void setX(int a){
+    	x = a;
+    }
+    public int getY(){
+    	return y;
+    }
+    public void setY(int a){
+    	y = a;
+    }
     public int getMana(){
     	return mana;
     }

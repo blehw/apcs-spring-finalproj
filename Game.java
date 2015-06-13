@@ -35,6 +35,7 @@ public class Game extends Canvas implements Runnable{
     private static final Terrain terrain = new Terrain();
     private int x = 10;
     private int y = 10;
+    Baller baller = new Baller();
     private Random rand = new Random();
     private double nsPerTick = 7500000000D/60D;
 
@@ -227,7 +228,8 @@ public class Game extends Canvas implements Runnable{
 	    }
 	}
 	if (input.space.isPressed()) {
-	    String direction = t[y][x].getCharacter().getDirection();
+		if(baller.getMana()>0){
+			String direction = t[y][x].getCharacter().getDirection();
 	    String move = t[y][x].getCharacter().getMove();
 	    if (move == "magic") {
 		t[y][x].getCharacter().setBallskillz(t[y][x].getCharacter().getBallskillz() - 10);
@@ -275,6 +277,8 @@ public class Game extends Canvas implements Runnable{
 		}
 		*/
 	    }
+		}
+	    
 	}
 	if (input.z.isPressed()) {
 	    t[y][x].getCharacter().setMove("magic");
@@ -335,6 +339,8 @@ public class Game extends Canvas implements Runnable{
 		*/
 	    }
 	}
+	baller.setX(x);
+    baller.setY(y);
     }
     
     public static void main(String[] args){ 
