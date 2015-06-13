@@ -181,7 +181,10 @@ public class Game extends Canvas implements Runnable{
 
 
 	if(input.up.isPressed() || input.left.isPressed() || input.right.isPressed() || input.down.isPressed()){
-		baller.setMana(baller.getMana()-1);
+		if(baller.getMana()>0){
+			baller.setMana(baller.getMana()-1);
+		}
+		
 	}
 
 	if (input.up.isPressed()  && y > 0 && t[y-1][x].getType() != "water" && (t[y-1][x].getType() != "enemy" || input.space.isPressed())){
@@ -189,12 +192,18 @@ public class Game extends Canvas implements Runnable{
 	    t[y][x].getCharacter().setDirection("up");
 	    t[y][x].setCharacter(null);
 	    y--;
+	    if(t[y-1][x].getType() != "enemy"){
+	    	baller.setMana(baller.getMana()+1);
+	    }
 	}
 	if (input.down.isPressed() && y+1 < terrain.getmaxY() && t[y+1][x].getType() != "water" && (t[y+1][x].getType() != "enemy" || input.space.isPressed())){
 	    t[y+1][x].setCharacter(t[y][x].getCharacter());
 	    t[y+1][x].getCharacter().setDirection("down");
 	    t[y][x].setCharacter(null);
 	    y++;
+	    if(t[y+1][x].getType() != "enemy"){
+	    	baller.setMana(baller.getMana()+1);
+	    }
 	}
 	if (input.left.isPressed()  && x > 0 && t[y][x-1].getType() != "water" && (t[y][x-1].getType() != "enemy" || input.space.isPressed())){
 	//if (input.left.isPressed() && x > 0 && t[y][x-1].getType() != "water" (t[y-1][x].getType() != "enemy" || input.space.isPressed())){
@@ -202,6 +211,9 @@ public class Game extends Canvas implements Runnable{
 	    t[y][x].getCharacter().setDirection("left");
 	    t[y][x].setCharacter(null);
 	    x--;
+	    if(t[y][x-1].getType() != "enemy"){
+	    	baller.setMana(baller.getMana()+1);
+	    }
 	}
 	if (input.right.isPressed()  && x+1 > 0 && t[y][x+1].getType() != "water" && (t[y][x+1].getType() != "enemy" || input.space.isPressed())){
 	//if (input.right.isPressed() && x+1 < terrain.getmaxX() &&
@@ -210,6 +222,9 @@ public class Game extends Canvas implements Runnable{
 	    t[y][x].getCharacter().setDirection("right");
 	    t[y][x].setCharacter(null);
 	    x++;
+	    if(t[y][x+1].getType() != "enemy"){
+	    	baller.setMana(baller.getMana()+1);
+	    }
 	}
 	if (input.space.isPressed()) {
 	    String direction = t[y][x].getCharacter().getDirection();
