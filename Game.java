@@ -137,7 +137,7 @@ public class Game extends Canvas implements Runnable{
 			    x++;
 			    */
 //=======
-/*
+
 		if (t[y][x].getCharacter() != null) {
 		    if (t[y][x].getCharacter().getID() == "enemy") {
 			Enemy e = new Enemy();
@@ -163,11 +163,11 @@ public class Game extends Canvas implements Runnable{
 				t[y][x+1].setCharacter(e);
 				x++;
 			    }
-			    */
+			    
 //>>>>>>> 12e00154e73c8aa30e1ccaacc02dc3593d593a8c
-			//}
-		    //}
-		//}
+			}
+		    }
+		}
 		
 	    //}
 	//}
