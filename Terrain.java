@@ -213,7 +213,7 @@ public class Terrain {
 	soften3();
 	soften4();
 	
-	int g = rand.nextInt(5) + 8;
+	int g = rand.nextInt(5) + 50;
 
 	for (int h = 0;h<g;h++) {
 	    int randX = rand.nextInt(100);

@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-
+import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 
 import java.util.*;
@@ -114,6 +114,11 @@ public class Game extends Canvas implements Runnable{
 
 	Tile[][] t = terrain.getTerrain();
 
+	if (t[y][x].getCharacter().getID() == "enemy") {
+	    JOptionPane.showMessageDialog(frame, "You dead, son.");
+	    frame.dispose();
+	}
+
 	if (baller.getMana() < 0) {
 	    baller.setMana(0);
 	} 
@@ -125,7 +130,7 @@ public class Game extends Canvas implements Runnable{
 		if (t[y][x].getCharacter() != null) {
 		    if (t[y][x].getCharacter().getID() == "enemy") {
 			Enemy e = new Enemy();
-			if (rand.nextInt(100) <25) {
+			if (rand.nextInt(100) <50) {
 			    int direction = rand.nextInt(4);
 			    if (direction == 0 && y-1 > -1) {
 				t[y][x].setCharacter(null);
