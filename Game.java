@@ -168,10 +168,10 @@ public class Game extends Canvas implements Runnable{
 
 
 	if((input.up.isPressed() || input.left.isPressed() || input.right.isPressed() || input.down.isPressed()) && (input.space.isPressed())){
-		if(baller.getMana()>0){
-			baller.setMana(baller.getMana()-2);
-		}
-		
+	    if(baller.getMana()>0){
+		baller.setMana(baller.getMana()-2);
+	    }
+	    
 	}
 
 	if (input.up.isPressed()  && y > 0 && t[y-1][x].getType() != "water" && (t[y-1][x].getCharacter() == null || (input.space.isPressed() && t[y][x].getCharacter().getMove() == "magic"))){
@@ -205,6 +205,30 @@ public class Game extends Canvas implements Runnable{
 	    x++;
 	 
 	}
+
+	if (!input.space.isPressed()) {
+
+	    if (input.up.isPressed() && y > 0 && t[y-1][x].getCharacter() != null) {
+		t[y][x].setCharacter(null);
+		y--;
+	    }
+	    
+	    if (input.down.isPressed() && y+1 < terrain.getmaxY() && t[y+1][x].getCharacter() != null) {
+		t[y][x].setCharacter(null);
+		y++;
+	    }
+	    
+	    if (input.left.isPressed() && x>0 && t[y][x-1].getCharacter() != null) {
+		t[y][x].setCharacter(null);
+		x--;
+	    }
+	    
+	    if (input.right.isPressed() && x+1 < terrain.getmaxX() && t[y][x+1].getCharacter() != null) {
+		t[y][x].setCharacter(null);
+		x++;
+	    }
+	}
+
 	if (input.space.isPressed()) {
 		if(baller.getMana()>0){
 			String direction = t[y][x].getCharacter().getDirection();
