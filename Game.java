@@ -114,6 +114,23 @@ public class Game extends Canvas implements Runnable{
 
 	Tile[][] t = terrain.getTerrain();
 
+	boolean over = true;
+
+	for (int y=0;y<terrain.getmaxY();y++) {
+	    for (int x=0;x<terrain.getmaxX();x++) {
+		if (t[y][x].getCharacter() != null) {
+		    if (t[y][x].getCharacter().getID() == "enemy") {
+			over = false;
+		    }
+		} 
+	    }
+	}
+
+	if (over) {
+	    JOptionPane.showMessageDialog(frame, "You win, son.");
+	    frame.dispose();
+	}
+
 	if (t[y][x].getCharacter().getID() == "enemy") {
 	    JOptionPane.showMessageDialog(frame, "You dead, son.");
 	    frame.dispose();
@@ -159,6 +176,18 @@ public class Game extends Canvas implements Runnable{
 				x++;
 			    }
 			}
+			/*
+			if (rand.nextInt(100) < 1) {
+			    if (y > 0 && y < 199 && x > 0 && x < 79) {
+				for (int i=y-1;i<y+1;i++) {
+				    for (int k=x-1;k<x+1;k++) {
+					Enemy en = new Enemy();
+					t[i][k].setCharacter(e);
+				    }
+				}
+			    }
+			}
+			*/
 		    }
 		}
 		
@@ -255,18 +284,20 @@ public class Game extends Canvas implements Runnable{
 		}
 	    }
 	    if (move == "freeze") {
-		t[y][x].getCharacter().setBallskillz(t[y][x].getCharacter().getBallskillz() - 20);
-		for (int i=y-2;i<y+2;i++) {
-		    for (int k=x-2;k<x+2;k++) {
-			t[i][k].setType("freeze");
-			t[i][k].setImage("^");
+		if (y-2 > 0 && y + 2 < 199 && x > 0 && x + 2 < 79) {
+		    t[y][x].getCharacter().setBallskillz(t[y][x].getCharacter().getBallskillz() - 20);
+		    for (int i=y-2;i<y+2;i++) {
+			for (int k=x-2;k<x+2;k++) {
+			    t[i][k].setType("freeze");
+			    t[i][k].setImage("^");
+			}
 		    }
-		}
-		for (int a=y-3;a<y+3;a++) {
-		    for (int b=x-3;b<x+3;b++) {
-			if (rand.nextInt(100) < 10) {
-			    t[a][b].setType("freeze");
-			    t[a][b].setImage("^");
+		    for (int a=y-3;a<y+3;a++) {
+			for (int b=x-3;b<x+3;b++) {
+			    if (rand.nextInt(100) < 10) {
+				t[a][b].setType("freeze");
+				t[a][b].setImage("^");
+			    }
 			}
 		    }
 		}
