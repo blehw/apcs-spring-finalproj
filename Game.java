@@ -16,7 +16,7 @@ public class Game extends Canvas implements Runnable{
     
     
     private static final long serialVersionUID = 1L;
-    private static Font sanSerifFont = new Font("SanSerif", Font.PLAIN, 12);
+    
     public static final int WIDTH = 200;
     public static final int HEIGHT = 81;
     public static final int SCALE = 10;
