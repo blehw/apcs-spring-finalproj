@@ -219,6 +219,10 @@ public class Terrain {
 	    int randX = rand.nextInt(200);
 	    int randY = rand.nextInt(80);
 	    Enemy enemy = new Enemy();
+	    Random r = new Random();
+	    if(r.nextInt(4)==0){
+	    	enemy.setReplicate(true);
+	    }
 	    if (terrain[randY][randX].getType() == "grass") {
 		terrain[randY][randX].setCharacter(enemy);
 	    }
