@@ -114,35 +114,14 @@ public class Game extends Canvas implements Runnable{
 
 	Tile[][] t = terrain.getTerrain();
 
-	//for (int y=0;y<terrain.getmaxY();y++) {
-	    //for (int x=0;x<terrain.getmaxX();x++) {
-
-		/*
-		if (t[y][x].getType() == "enemy") {
-		    if (rand.nextInt(100) <25) {
-			int direction = rand.nextInt(4);
-			if (direction == 0 && y-1 > -1) {
-			    t[y][x].setType("");
-			    t[y-1][x].setType("enemy");
-			    y--;
-			}
-		        if (direction == 1 && y+1  < terrain.getmaxY()) {
-			    t[y][x].setType("");
-			    t[y+1][x].setType("enemy");
-			    y++;
-			}
-			if (direction == 2 && x-1 > -1) {
-			    t[y][x].setType("");
-			    t[y][x-1].setType("enemy");
-			    x--;
-			}
-			if (direction == 3 && x+1 < terrain.getmaxX()) {
-			    t[y][x].setType("");
-			    t[y][x+1].setType("enemy");
-			    x++;
-			    */
-//=======
-
+	if (baller.getMana() < 0) {
+	    baller.setMana(0);
+	} 
+		      
+	baller.setMana(baller.getMana() + 1);
+		    
+	for (int y=0;y<terrain.getmaxY();y++) {
+	    for (int x=0;x<terrain.getmaxX();x++) {
 		if (t[y][x].getCharacter() != null) {
 		    if (t[y][x].getCharacter().getID() == "enemy") {
 			Enemy e = new Enemy();
@@ -168,14 +147,12 @@ public class Game extends Canvas implements Runnable{
 				t[y][x+1].setCharacter(e);
 				x++;
 			    }
-			    
-//>>>>>>> 12e00154e73c8aa30e1ccaacc02dc3593d593a8c
 			}
 		    }
 		}
 		
-	    //}
-	//}
+	    }
+	}
 	
 	if (t[y][x].getType() == "water") {
 	    nsPerTick = 15000000000D/60D;
@@ -185,51 +162,43 @@ public class Game extends Canvas implements Runnable{
 	}
 
 
-	if(input.up.isPressed() || input.left.isPressed() || input.right.isPressed() || input.down.isPressed()){
+	if((input.up.isPressed() || input.left.isPressed() || input.right.isPressed() || input.down.isPressed()) && (input.space.isPressed())){
 		if(baller.getMana()>0){
-			baller.setMana(baller.getMana()-1);
+			baller.setMana(baller.getMana()-2);
 		}
 		
 	}
 
-	if (input.up.isPressed()  && y > 0 && t[y-1][x].getType() != "water" && (t[y-1][x].getType() != "enemy" || input.space.isPressed())){
-	    t[y-1][x].setCharacter(t[y][x].getCharacter());
+	if (input.up.isPressed()  && y > 0 && t[y-1][x].getType() != "water" && (t[y-1][x].getCharacter() == null || (input.space.isPressed() && t[y][x].getCharacter().getMove() == "magic"))){
 	    t[y][x].getCharacter().setDirection("up");
+	    t[y-1][x].setCharacter(t[y][x].getCharacter());
 	    t[y][x].setCharacter(null);
 	    y--;
-	    if(t[y-1][x].getType() != "enemy"){
-	    	baller.setMana(baller.getMana()+1);
-	    }
+	  
 	}
-	if (input.down.isPressed() && y+1 < terrain.getmaxY() && t[y+1][x].getType() != "water" && (t[y+1][x].getType() != "enemy" || input.space.isPressed())){
+	if (input.down.isPressed() && y+1 < terrain.getmaxY() && t[y+1][x].getType() != "water" && (t[y+1][x].getCharacter() == null ||(input.space.isPressed() && t[y][x].getCharacter().getMove() == "magic"))){
+	    t[y][x].getCharacter().setDirection("down");
 	    t[y+1][x].setCharacter(t[y][x].getCharacter());
-	    t[y+1][x].getCharacter().setDirection("down");
 	    t[y][x].setCharacter(null);
 	    y++;
-	    if(t[y+1][x].getType() != "enemy"){
-	    	baller.setMana(baller.getMana()+1);
-	    }
+	   
 	}
-	if (input.left.isPressed()  && x > 0 && t[y][x-1].getType() != "water" && (t[y][x-1].getType() != "enemy" || input.space.isPressed())){
+	if (input.left.isPressed()  && x > 0 && t[y][x-1].getType() != "water" && (t[y][x-1].getCharacter() == null || (input.space.isPressed() && t[y][x].getCharacter().getMove() == "magic"))){
 	//if (input.left.isPressed() && x > 0 && t[y][x-1].getType() != "water" (t[y-1][x].getType() != "enemy" || input.space.isPressed())){
-	    t[y][x-1].setCharacter(t[y][x].getCharacter());
 	    t[y][x].getCharacter().setDirection("left");
+	    t[y][x-1].setCharacter(t[y][x].getCharacter());
 	    t[y][x].setCharacter(null);
 	    x--;
-	    if(t[y][x-1].getType() != "enemy"){
-	    	baller.setMana(baller.getMana()+1);
-	    }
+	  
 	}
-	if (input.right.isPressed()  && x+1 > 0 && t[y][x+1].getType() != "water" && (t[y][x+1].getType() != "enemy" || input.space.isPressed())){
+	if (input.right.isPressed()  && x+1 > 0 && t[y][x+1].getType() != "water" && (t[y][x+1].getCharacter() == null|| (input.space.isPressed() && t[y][x].getCharacter().getMove() == "magic"))){
 	//if (input.right.isPressed() && x+1 < terrain.getmaxX() &&
 	    //t[y][x+1].getType() != "water" (t[y-1][x].getType() != "enemy" || input.space.isPressed())){
-	    t[y][x+1].setCharacter(t[y][x].getCharacter());
 	    t[y][x].getCharacter().setDirection("right");
+	    t[y][x+1].setCharacter(t[y][x].getCharacter());
 	    t[y][x].setCharacter(null);
 	    x++;
-	    if(t[y][x+1].getType() != "enemy"){
-	    	baller.setMana(baller.getMana()+1);
-	    }
+	 
 	}
 	if (input.space.isPressed()) {
 		if(baller.getMana()>0){

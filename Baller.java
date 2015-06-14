@@ -40,7 +40,7 @@ public class Baller extends Person {
 	*/
 	
 	ballskillz = 200;
-	mana = 20;
+	mana = 100;
 	direction = "right";
 	move = "magic";
 	
