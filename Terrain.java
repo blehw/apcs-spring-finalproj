@@ -213,18 +213,13 @@ public class Terrain {
 	soften3();
 	soften4();
 	
-	int g = rand.nextInt(5) + 50;
+	int g = rand.nextInt(5) + 30;
 
 	for (int h = 0;h<g;h++) {
-	    int randX = rand.nextInt(100);
-	    int randY = rand.nextInt(40);
+	    int randX = rand.nextInt(200);
+	    int randY = rand.nextInt(80);
 	    Enemy enemy = new Enemy();
-	    if (terrain[randY][randX].getType() == "grass") {
-		terrain[randY][randX].setCharacter(enemy);
-	    }
-	}
-	for (int a = 0;a<200;a++) {
-	    terrain[79][a].setType("mana");
+	    terrain[randY][randX].setCharacter(enemy);
 	}
     }
 

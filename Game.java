@@ -129,8 +129,14 @@ public class Game extends Canvas implements Runnable{
 	    for (int x=0;x<terrain.getmaxX();x++) {
 		if (t[y][x].getCharacter() != null) {
 		    if (t[y][x].getCharacter().getID() == "enemy") {
+			int random;
+			if (t[y][x].getType() == "freeze") {
+			    random = 5;
+			} else {
+			    random = 25;
+			}
 			Enemy e = new Enemy();
-			if (rand.nextInt(100) <50) {
+			if (rand.nextInt(100) <random) {
 			    int direction = rand.nextInt(4);
 			    if (direction == 0 && y-1 > -1) {
 				t[y][x].setCharacter(null);
@@ -321,9 +327,6 @@ public class Game extends Canvas implements Runnable{
 		if (t[y][x].getType() == "freeze") {
 		    //Color lightblue = new Color(0,255,255);
 		    image.setRGB(x,y,Color.CYAN.getRGB());
-		}
-		if (t[y][x].getType() == "mana") {
-		    image.setRGB(x,y,Color.WHITE.getRGB());
 		}
 		if (t[y][x].getCharacter() != null) {
 		    if (t[y][x].getCharacter().getID() == "baller") {
