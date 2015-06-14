@@ -130,6 +130,7 @@ public class Game extends Canvas implements Runnable{
 		if (t[y][x].getCharacter() != null) {
 		    if (t[y][x].getCharacter().getID() == "enemy") {
 			Enemy e = new Enemy();
+			
 			if (rand.nextInt(100) <50) {
 			    int direction = rand.nextInt(4);
 			    if (direction == 0 && y-1 > -1) {
@@ -331,6 +332,9 @@ public class Game extends Canvas implements Runnable{
 		    }
 		    if (t[y][x].getCharacter().getID() == "enemy") {
 			image.setRGB(x,y,Color.YELLOW.getRGB());
+			if(t[y][x].getCharacter().getReplicate()){
+				image.setRGB(x,y,Color.CYAN.getRGB());
+			}
 		    }
 		    
 		}
