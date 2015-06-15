@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import java.util.*;
 import java.io.*;
 
-public class Game extends Canvas implements Runnable{
+public class Driver extends Canvas implements Runnable{
     
     
     private static final long serialVersionUID = 1L;
@@ -39,7 +39,7 @@ public class Game extends Canvas implements Runnable{
     private Random rand = new Random();
     private double nsPerTick = 7500000000D/60D;
 
-    public Game(){
+    public Driver(){
 	setMinimumSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
 	setMaximumSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
 	setPreferredSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
@@ -55,10 +55,6 @@ public class Game extends Canvas implements Runnable{
 	frame.setResizable(false);
 	frame.setLocationRelativeTo(null);
 	frame.setVisible(true);	
-
-
-	
-
 
 	input = new InputHandler(this);
     }
@@ -364,7 +360,7 @@ public class Game extends Canvas implements Runnable{
     }
     
     public static void main(String[] args){ 
-	new Game().start();	
+	new Driver().start();	
     }
     
 }

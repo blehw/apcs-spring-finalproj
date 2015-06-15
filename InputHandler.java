@@ -5,7 +5,7 @@ import java.util.List;
 
 public class InputHandler implements KeyListener {
 
-    public InputHandler(Game game) {
+    public InputHandler(Driver game) {
 	game.requestFocus(); // click window to move bug fix he didn't add this
 	game.addKeyListener(this);
     }
