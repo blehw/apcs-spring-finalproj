@@ -11,7 +11,7 @@ public class Enemy extends Baller {
     private int rep;
     private String direction;
     private String move;
-    
+    private Boolean replicate;
     public Enemy() {
 	ID = "enemy";
 	
@@ -32,9 +32,17 @@ public class Enemy extends Baller {
 
 	charitimasma = charitimasma + skills;
 	rep = 1;
-
+	replicate = false;
 	direction = "right";
 	
+    }
+
+    public Boolean getReplicate(){
+    	return replicate;
+    }
+
+    public void setReplicate(boolean r){
+    	replicate = r;
     }
 
     public String getID() {

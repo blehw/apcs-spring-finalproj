@@ -12,6 +12,7 @@ public class Baller extends Person {
     private String direction;
     private String move;
     private int mana;
+    private Boolean replicate;
     int x;
     int y;
 
@@ -34,16 +35,19 @@ public class Baller extends Person {
 	int b = rand.nextInt(skills);
 	ballskillz = ballskillz + b;
 	skills = skills - b;
-
+	
 	charitimasma = charitimasma + skills;
 	rep = 1;
 	*/
-	
+	replicate = false;
 	ballskillz = 200;
 	mana = 100;
 	direction = "right";
 	move = "magic";
 	
+    }
+    public Boolean getReplicate(){
+    	return replicate;
     }
     public int getX(){
     	return x;
