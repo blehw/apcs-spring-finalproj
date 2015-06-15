@@ -114,23 +114,6 @@ public class Game extends Canvas implements Runnable{
 
 	Tile[][] t = terrain.getTerrain();
 
-	boolean over = true;
-
-	for (int y=0;y<terrain.getmaxY();y++) {
-	    for (int x=0;x<terrain.getmaxX();x++) {
-		if (t[y][x].getCharacter() != null) {
-		    if (t[y][x].getCharacter().getID() == "enemy") {
-			over = false;
-		    }
-		} 
-	    }
-	}
-
-	if (over) {
-	    JOptionPane.showMessageDialog(frame, "You win, son.");
-	    frame.dispose();
-	}
-
 	if (t[y][x].getCharacter().getID() == "enemy") {
 	    JOptionPane.showMessageDialog(frame, "You dead, son.");
 	    frame.dispose();
@@ -146,19 +129,9 @@ public class Game extends Canvas implements Runnable{
 	    for (int x=0;x<terrain.getmaxX();x++) {
 		if (t[y][x].getCharacter() != null) {
 		    if (t[y][x].getCharacter().getID() == "enemy") {
-			int random;
-			if (t[y][x].getType() == "freeze") {
-			    random = 5;
-			} else {
-			    random = 25;
-			}
 			Enemy e = new Enemy();
-<<<<<<< HEAD
-			if (rand.nextInt(100) <random) {
-=======
 			
 			if (rand.nextInt(100) <50) {
->>>>>>> 1e4770a240b0b25882bd903fdfdd339c9a10b9a8
 			    int direction = rand.nextInt(4);
 			    if (direction == 0 && y-1 > -1) {
 			   	Random r = new Random();
@@ -195,18 +168,6 @@ public class Game extends Canvas implements Runnable{
 				x++;
 			    }
 			}
-			/*
-			if (rand.nextInt(100) < 1) {
-			    if (y > 0 && y < 199 && x > 0 && x < 79) {
-				for (int i=y-1;i<y+1;i++) {
-				    for (int k=x-1;k<x+1;k++) {
-					Enemy en = new Enemy();
-					t[i][k].setCharacter(e);
-				    }
-				}
-			    }
-			}
-			*/
 		    }
 		}
 		
@@ -303,20 +264,18 @@ public class Game extends Canvas implements Runnable{
 		}
 	    }
 	    if (move == "freeze") {
-		if (y-2 > 0 && y + 2 < 199 && x > 0 && x + 2 < 79) {
-		    t[y][x].getCharacter().setBallskillz(t[y][x].getCharacter().getBallskillz() - 20);
-		    for (int i=y-2;i<y+2;i++) {
-			for (int k=x-2;k<x+2;k++) {
-			    t[i][k].setType("freeze");
-			    t[i][k].setImage("^");
-			}
+		t[y][x].getCharacter().setBallskillz(t[y][x].getCharacter().getBallskillz() - 20);
+		for (int i=y-2;i<y+2;i++) {
+		    for (int k=x-2;k<x+2;k++) {
+			t[i][k].setType("freeze");
+			t[i][k].setImage("^");
 		    }
-		    for (int a=y-3;a<y+3;a++) {
-			for (int b=x-3;b<x+3;b++) {
-			    if (rand.nextInt(100) < 10) {
-				t[a][b].setType("freeze");
-				t[a][b].setImage("^");
-			    }
+		}
+		for (int a=y-3;a<y+3;a++) {
+		    for (int b=x-3;b<x+3;b++) {
+			if (rand.nextInt(100) < 10) {
+			    t[a][b].setType("freeze");
+			    t[a][b].setImage("^");
 			}
 		    }
 		}
@@ -377,6 +336,9 @@ public class Game extends Canvas implements Runnable{
 		if (t[y][x].getType() == "freeze") {
 		    //Color lightblue = new Color(0,255,255);
 		    image.setRGB(x,y,Color.CYAN.getRGB());
+		}
+		if (t[y][x].getType() == "mana") {
+		    image.setRGB(x,y,Color.WHITE.getRGB());
 		}
 		if (t[y][x].getCharacter() != null) {
 		    if (t[y][x].getCharacter().getID() == "baller") {
