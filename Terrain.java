@@ -220,7 +220,7 @@ public class Terrain {
 	    int randY = rand.nextInt(80);
 	    Enemy enemy = new Enemy();
 	    Random r = new Random();
-	    if(r.nextInt(4)==0){
+	    if(r.nextInt(4)==2){
 	    	enemy.setReplicate(true);
 	    }
 	    if (terrain[randY][randX].getType() == "grass") {

@@ -134,22 +134,36 @@ public class Game extends Canvas implements Runnable{
 			if (rand.nextInt(100) <50) {
 			    int direction = rand.nextInt(4);
 			    if (direction == 0 && y-1 > -1) {
-				t[y][x].setCharacter(null);
+			   	Random r = new Random();
+			   	if(!(r.nextInt(8)==4 && e.getReplicate())){
+			   		t[y][x].setCharacter(null);
+			   	}
+				
 				t[y-1][x].setCharacter(e);
 				y--;
 			    }
 			    if (direction == 1 && y+1  < terrain.getmaxY()) {
-				t[y][x].setCharacter(null);
+			    	Random r = new Random();
+				if(!(r.nextInt(8)==4 && e.getReplicate())){
+			   		t[y][x].setCharacter(null);
+			   	}
 				t[y+1][x].setCharacter(e);
 				y++;
 			    }
 			    if (direction == 2 && x-1 > -1) {
-				t[y][x].setCharacter(null);
+			    	Random r = new Random();
+				if(!(r.nextInt(8)==4 && e.getReplicate())){
+
+			   		t[y][x].setCharacter(null);
+			   	}
 				t[y][x-1].setCharacter(e);
 				x--;
 			    }
 			    if (direction == 3 && x+1 < terrain.getmaxX()) {
-				t[y][x].setCharacter(null);
+			    	Random r = new Random();
+				if(!(r.nextInt(8)==4 && e.getReplicate())){
+			   		t[y][x].setCharacter(null);
+			   	}
 				t[y][x+1].setCharacter(e);
 				x++;
 			    }
